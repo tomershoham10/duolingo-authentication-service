@@ -1,6 +1,7 @@
 import Express from "express";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import AuthManager from "./manager.js";
 dotenv.config();
 
 const accessToken =
@@ -16,6 +17,26 @@ export class AuthController {
       });
       console.log("auth-controller token", token);
       res.status(200).json({ token });
+    } catch (err) {
+      //   console.log(err);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  }
+
+  static async vetifyToken(req: Express.Request, res: Express.Response) {
+    try {
+      const userName = req.body.userName;
+      const reqAccessToken = req.headers.Authorization as string;
+      const reqRefreshToken = req.headers.refershToken as string;
+      const response = await AuthManager.vetifyToken(
+        userName,
+        reqAccessToken,
+        reqRefreshToken
+      );
+      if (response) {
+      } else {
+        res.status(401).json({ error: "Tokens are invalid. Log in again." });
+      }
     } catch (err) {
       //   console.log(err);
       res.status(500).json({ error: "Internal Server Error" });

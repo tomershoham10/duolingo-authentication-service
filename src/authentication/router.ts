@@ -4,8 +4,11 @@ import { asyncHandler } from "../middleware/asyncHandler.js";
 
 const userRouter = express.Router();
 
-userRouter.post("/tokens-generate", asyncHandler(AuthController.tokensGenerate));
+userRouter.post(
+  "/tokens-generate",
+  asyncHandler(AuthController.tokensGenerate)
+);
 
-// userRouter.post("/authorization", asyncHandler(AuthController.getById));
+userRouter.post("/vetify-token", asyncHandler(AuthController.vetifyToken));
 
 export default userRouter;
