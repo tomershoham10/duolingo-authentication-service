@@ -10,10 +10,11 @@ export class AuthController {
   static async tokensGenerate(req: Express.Request, res: Express.Response) {
     try {
       const userName = req.body.userName;
+      const userId = req.body.userId;
       const role = req.body.role;
 
-      console.log("auth-controller userName", userName, role, accessToken);
-      const token = jwt.sign({ userName: userName, role: role }, accessToken, {
+      console.log("auth-controller userName", userName, userId, role, accessToken);
+      const token = jwt.sign({ userName: userName, userId: userId, role: role }, accessToken, {
         expiresIn: "10m",
       });
       console.log("auth-controller token", token);
