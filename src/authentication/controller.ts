@@ -14,7 +14,7 @@ export class AuthController {
       const nextLessonId = req.body.nextLessonId;
       const role = req.body.role;
 
-      console.log("auth-controller userName", userName, userId, role, accessToken);
+      console.log("auth-controller userName", req.body, userName, userId, role, nextLessonId);
       const token = jwt.sign({ userName: userName, userId: userId, nextLessonId: nextLessonId, role: role }, accessToken, {
         expiresIn: "10m",
       });
@@ -22,6 +22,7 @@ export class AuthController {
       res.status(200).json({ token });
     } catch (err) {
       //   console.log(err);
+      console.error(err);
       res.status(500).json({ error: "Internal Server Error" });
     }
   }
