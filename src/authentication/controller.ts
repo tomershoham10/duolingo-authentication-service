@@ -12,10 +12,11 @@ export class AuthController {
       const userName = req.body.userName;
       const userId = req.body.userId;
       const nextLessonId = req.body.nextLessonId;
+      const courseId = req.body.courseId;
       const role = req.body.role;
 
       console.log("auth-controller userName", req.body, userName, userId, role, nextLessonId);
-      const token = jwt.sign({ userName: userName, userId: userId, nextLessonId: nextLessonId, role: role }, accessToken, {
+      const token = jwt.sign({ userName: userName, userId: userId, courseId: courseId, nextLessonId: nextLessonId, role: role }, accessToken, {
         expiresIn: "10m",
       });
       console.log("auth-controller token", token);
