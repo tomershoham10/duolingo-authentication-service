@@ -7,7 +7,7 @@ dotenv.config();
 const accessToken =
   "cd24b2634fedbecca3eae5f1e25db63276aa79d82de13693b3ba206ee116a3bf870040c8719cda2c65a4974f4f1c4c5fba52bdf5c7eeed56a09fa7677dfd8b4a";
 
-export class AuthController {
+export default class AuthController {
   static async tokensGenerate(req: Request, res: Response) {
     try {
       const userName = req.body.userName;
