@@ -21,7 +21,7 @@ const startServer = () => {
 const configureMiddlewares = (app: Express) => {
   app.use(
     cors({
-      origin: "http://localhost:4000",
+      origin: ["http://localhost:3000", "http://localhost:4000"],
       credentials: true,
       exposedHeaders: ["Authorization"],
     })
