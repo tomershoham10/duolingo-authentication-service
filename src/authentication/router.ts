@@ -2,11 +2,11 @@ import express from "express";
 import AuthController from "./controller.js";
 import { asyncHandler } from "../middleware/asyncHandler.js";
 
-const userRouter = express.Router();
-userRouter.get("/getRecordZipPassword", AuthController.getRecordZipPassword);
+const authRouter = express.Router();
+authRouter.get("/getRecordZipPassword/:recordName", AuthController.getRecordZipPassword);
 
-userRouter.post("/tokens-generate", asyncHandler(AuthController.tokensGenerate));
+authRouter.post("/tokens-generate", asyncHandler(AuthController.tokensGenerate));
 
-// userRouter.post("/authorization", asyncHandler(AuthController.getById));
+// authRouter.post("/authorization", asyncHandler(AuthController.getById));
 
-export default userRouter;
+export default authRouter;
