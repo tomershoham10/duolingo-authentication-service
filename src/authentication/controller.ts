@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import { Request, Response } from "express";
-import { sign } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import { generatePassword } from "../utils/generatePassword.js";
 dotenv.config();
 
@@ -17,7 +17,7 @@ export default class AuthController {
       const role = req.body.role;
 
       console.log("auth-controller userName", req.body, userName, userId, role, nextLessonId);
-      const token = sign({ userName: userName, userId: userId, courseId: courseId, nextLessonId: nextLessonId, role: role }, accessToken, {
+      const token = jwt.sign({ userName: userName, userId: userId, courseId: courseId, nextLessonId: nextLessonId, role: role }, accessToken, {
         expiresIn: "10m",
       });
       console.log("auth-controller token", token);
