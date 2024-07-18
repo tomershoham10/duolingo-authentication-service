@@ -1,11 +1,12 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { CustomError, IResponseError } from '../exceptions/customError.js';
 
 export function errorHandler(
   err: any,
   req: Request,
-  res: Response
-  // next: NextFunction
+  res: Response,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  next: NextFunction
 ) {
   console.error(err);
   if (!(err instanceof CustomError)) {
