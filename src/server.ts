@@ -21,7 +21,11 @@ const startServer = () => {
 const configureMiddlewares = (app: Express) => {
   app.use(
     cors({
-      origin: ['http://localhost:3000', 'http://localhost:4000'],
+      origin: [
+        'http://localhost:3000',
+        'http://localhost:4000',
+        'https://005d-89-138-135-64.ngrok-free.app',
+      ],
       credentials: true,
       exposedHeaders: ['Authorization'],
     })
